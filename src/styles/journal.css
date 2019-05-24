@@ -1,5 +1,11 @@
 fieldset {
     display: flex;
     flex-direction: column;
-    align-content: center
+    align-content: center;
+}
+form {
+    width: 40%;
+}
+.label {
+    width: 200px;
 }
