@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">  
-    <link rel="stylesheet" href="styles/journal.css">
-        <title>Daily Journal</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles/journal.css" />
+    <title>Daily Journal</title>
+  </head>
+  <body>
     <h1>Daily Journal</h1>
     <form action="" class="form">
-        <fieldset>
+      <fieldset>
         <label for="journalDate">Date of Entry</label>
-        <input type="date" name="journalDate" id="journalDate" class="label">
-    </fieldset>
+        <input type="date" name="journalDate" id="journalDate" class="label" />
+      </fieldset>
     </form>
     <form action="" class="form">
-        <fieldset>
-            <label for="conceptsCovered">Concepts Covered</label>
-            <input type="text" name="conceptsCovered" id="conceptsCovered" class="label">
-        </fieldset>
+      <fieldset>
+        <label for="conceptsCovered">Concepts Covered</label>
+        <textarea
+          rows="5"
+          columns="25"
+          name="conceptsCovered"
+          id="conceptsCovered"
+          class="label"
+        ></textarea>
+      </fieldset>
     </form>
     <form action="" class="form">
-        <fieldset>
-            <label for="jornalEntry">Journal Entry</label>
-            <input type="text" name="journalEntry" id="journalEntry" class="label">
-        </fieldset>
+      <fieldset>
+        <label for="jornalEntry">Journal Entry</label>
+        <textarea
+          rows="5"
+          columns="25"
+          name="journalEntry"
+          id="journalEntry"
+          class="label"
+        ></textarea>
+      </fieldset>
     </form>
     <form action="" class="form">
-        <fieldset class="tiger">
-            <label for="moodForTheDay">Mood for the Day</label>
-            <select name="moodForTheDay" id="moodForTheDay" class="label">
-                <option value="happy">Happy</option>
-                <option value="determined">Determined</option>
-                <option value="frustrated">Frustrated</option>
-                <option value="confused">Confused</option>
-                <option value="needToWorkHarder">Need to Work Harder</option>
-            </select>
-        </fieldset>
+      <fieldset class="tiger">
+        <label for="moodForTheDay">Mood for the Day</label>
+        <select name="moodForTheDay" id="moodForTheDay" class="label">
+          <option value="happy">Happy</option>
+          <option value="determined">Determined</option>
+          <option value="frustrated">Frustrated</option>
+          <option value="confused">Confused</option>
+          <option value="needToWorkHarder">Need to Work Harder</option>
+        </select>
+      </fieldset>
     </form>
     <button type="Button">Record Journal Entry</button>
-</body>
+    <script src="scripts/journal.js"></script>
+  </body>
 </html>
