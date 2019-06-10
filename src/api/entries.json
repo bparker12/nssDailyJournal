@@ -1,0 +1,23 @@
+{
+    "entries": [
+    {
+        "date": "6/3/2019",
+        "concepts_covered": "JS Dot Notation & Bracket Notation & Functions",
+        "journal_entry": "It was tough for me to pick up on the functions, need to work on them a lot more",
+        "mood": "Confused"
+
+    },
+    {
+        "date": "6/5/2019",
+        "concepts_covered": "Functions and API's with JSON",
+        "journal_entry": "API's look to be really tough, but seem to be really useful moving forward",
+        "mood": "Good"
+    },
+    {
+        "date": "6/7/2019",
+        "concepts_covered": "User input & Lab Time",
+        "journal_entry": "User input will be a very useful tool going forward to make the apps more usable. Seems difficult and challenging to know with everything else we have learned throughtout the week.  Need to practice a lot more",
+        "mood": "Challenged" 
+    }
+]
+}
