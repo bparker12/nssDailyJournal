@@ -31,5 +31,10 @@ form {
     justify-content: flex-start;
     width: 240px;
     background-color: darkslateblue;
-
+    
+}
+.jConcepts{
+    display: flex;
+    flex-direction: column;
+    
 }
