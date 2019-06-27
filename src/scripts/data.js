@@ -17,6 +17,14 @@ function postNewJournalEntry(entry) {
     })
 }
 
-
+function deleteJournalEntry(entry){
+return fetch(`http://localhost:8088/entries/${entry}`, {
+    method: "DELETE",
+    headers: {
+        "Content-Type": "application/json"
+    }
+})
+.then(res => res.json())
+}
 // fetch("http://localhost:3000/entries") // Fetch from the API
 //     .then(data => data.json())  // Parse as JSON
