@@ -6,6 +6,39 @@
     to get the data and display it.
 */
 API.getJournalEntries().then(loopToDom)
+console.log(API.getJournalEntries())
+
+let saveJournalEntry = document.querySelector("#journal-save-btn")
+
+saveJournalEntry.addEventListener("click", () => {
+    let newdate = document.querySelector("#journalDate").value
+    let newConcepts = document.querySelector("#conceptsCovered").value
+    let newJEntry = document.querySelector("#journalEntry").value
+    let newMood = document.querySelector("#moodForTheDay").value
+    if (newDate === "" || newConcepts === "" || newJEntry === "" || newMood === "") {
+    } else {
+        let newEntry = createJournalEntryFunc(newdate, newConcepts, newJEntry, newMood)
+        console.log(newEntry)
+        postNewJournalEntry(newEntry)
+            .then(data => data.json())
+            .then(dataJS => {
+                console.log(dataJS.newMood)
+                journalContainer.innerHTML = ""
+                API.getJournalEntries()
+                // .then( entryData => loopToDom(entryData))
+            })
+    }
+})
+
+
+let createJournalEntryFunc = (date, concepts, entry, mood) => {
+    return ({
+        date: date,
+        concepts_covered: concepts,
+        journal_entry: entry,
+        mood: mood
+    })
+}
 
 
 // API.getJournalEntries()
