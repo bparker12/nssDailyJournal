@@ -1,4 +1,4 @@
-
+//this is how you fetch the data from the JSON server
 const API = {
     getJournalEntries() {
         return fetch("http://localhost:8088/entries")
@@ -6,6 +6,7 @@ const API = {
 
     }
 }
+//this function allows you to push new journal entries into the DOM
 function postNewJournalEntry(entry) {
     return fetch("http://localhost:8088/entries", {
         method: "POST",

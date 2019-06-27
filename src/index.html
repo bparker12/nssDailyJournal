@@ -61,16 +61,30 @@
             <option value="determined">Determined</option>
             <option value="frustrated">Frustrated</option>
             <option value="confused">Confused</option>
-            <option value="needToWorkHarder">Need to Work Harder</option>
+            <option value="challenged">Challenged</option>
           </select>
         </fieldset>
       </form>
       <button type="Button" id="journal-save-btn">Record Journal Entry</button>
     </div>
+    <fieldset>
+      <legend>Filter Journal Entries by Mood</legend>
+      <div>
+      <label for="happy">Happy</label>
+      <input type="radio" name="mood" id="happy" value="happy">
+      <label for="determined">Determined</label>
+      <input type="radio" name="mood" id="determined" value="determined">
+      <label for="frustrated">Frustrated</label>
+      <input type="radio" name="mood" id="frustrated" value="frustrated">
+      <label for="challenged">Challenged</label>
+      <input type="radio" name="mood" id="challenged" value="challenged">
+    </div>
+    </fieldset>
     <article class="entryLog"></article>
     <script src="scripts/data.js"></script>
     <script src="scripts/entryComponent.js"></script>
     <script src="scripts/entriesDOM.js"></script>
     <script src="scripts/journal.js"></script>
+    <script src="scripts/radio-buttons.js"></script>
   </body>
 </html>
