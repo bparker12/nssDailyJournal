@@ -16,5 +16,7 @@ function journalText(inputs) {
         class="label">${inputs.journal_entry}</textarea>
         </form>
         <p class = "jmood"> My mood for today is: ${inputs.mood}</p>
-    </div>`
+        </div>
+        <button id="deleteBtn-${inputs.id}" class="delete">Delete Button</button>
+        `
 }

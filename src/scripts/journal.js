@@ -12,13 +12,13 @@ let saveJournalEntry = document.querySelector("#journal-save-btn")
 
 //event listener for the submit button on a new journal entry
 saveJournalEntry.addEventListener("click", () => {
-    let newdate = document.querySelector("#journalDate").value
+    let newDate = document.querySelector("#journalDate").value
     let newConcepts = document.querySelector("#conceptsCovered").value
     let newJEntry = document.querySelector("#journalEntry").value
     let newMood = document.querySelector("#moodForTheDay").value
     if (newDate === "" || newConcepts === "" || newJEntry === "" || newMood === "") {
     } else {
-        let newEntry = createJournalEntryFunc(newdate, newConcepts, newJEntry, newMood)
+        let newEntry = createJournalEntryFunc(newDate, newConcepts, newJEntry, newMood)
         console.log(newEntry)
         postNewJournalEntry(newEntry)
             .then(data => data.json())
@@ -40,6 +40,40 @@ let createJournalEntryFunc = (date, concepts, entry, mood) => {
         mood: mood
     })
 }
+
+function deleteBtnListener() {
+    let deleteClass = document.querySelectorAll(".delete")
+    deleteClass.forEach(deleteBtn => {
+            deleteBtn.addEventListener("click", () => {
+            console.log("is this delete?")
+            let btnId = event.target.id.split('-')[1]
+            console.log(btnId)
+            deleteJournalEntry(btnId)
+            .then( data => {
+            API.getJournalEntries().then(loopToDom)
+            })
+        })
+    })
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // API.getJournalEntries()
