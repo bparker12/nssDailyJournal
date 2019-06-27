@@ -9,49 +9,64 @@
   </head>
   <body>
     <h1>Daily Journal</h1>
-    <form action="" class="form">
-      <fieldset>
-        <label for="journalDate">Date of Entry</label>
-        <input type="date" name="journalDate" id="journalDate" class="label" />
-      </fieldset>
-    </form>
-    <form action="" class="form">
-      <fieldset>
-        <label for="conceptsCovered">Concepts Covered</label>
-        <textarea
-          rows="5"
-          columns="25"
-          name="conceptsCovered"
-          id="conceptsCovered"
-          class="label"
-        ></textarea>
-      </fieldset>
-    </form>
-    <form action="" class="form">
-      <fieldset>
-        <label for="jornalEntry">Journal Entry</label>
-        <textarea
+    <div>
+      <form action="" class="form">
+        <fieldset>
+          <label for="journalDate">Date of Entry</label>
+          <input
+            type="date"
+            name="journalDate"
+            required
+            id="journalDate"
+            class="label"
+          />
+        </fieldset>
+      </form>
+      <form action="" class="form">
+        <fieldset>
+          <label for="conceptsCovered">Concepts Covered</label>
+          <textarea
+            rows="5"
+            columns="25"
+            name="conceptsCovered"
+            required
+            id="conceptsCovered"
+            class="label"
+          ></textarea>
+        </fieldset>
+      </form>
+      <form action="" class="form">
+        <fieldset>
+          <label for="jornalEntry">Journal Entry</label>
+          <textarea
           rows="5"
           columns="25"
           name="journalEntry"
-          id="journalEntry"
-          class="label"
-        ></textarea>
-      </fieldset>
-    </form>
-    <form action="" class="form">
-      <fieldset class="tiger">
-        <label for="moodForTheDay">Mood for the Day</label>
-        <select name="moodForTheDay" id="moodForTheDay" class="label">
-          <option value="happy">Happy</option>
-          <option value="determined">Determined</option>
-          <option value="frustrated">Frustrated</option>
-          <option value="confused">Confused</option>
-          <option value="needToWorkHarder">Need to Work Harder</option>
-        </select>
-      </fieldset>
-    </form>
-    <button type="Button">Record Journal Entry</button>
+          required
+            id="journalEntry"
+            class="label"
+          ></textarea>
+        </fieldset>
+      </form>
+      <form action="" class="form">
+        <fieldset class="tiger">
+          <label for="moodForTheDay">Mood for the Day</label>
+          <select
+            name="moodForTheDay"
+            required
+            id="moodForTheDay"
+            class="label"
+          >
+            <option value="happy">Happy</option>
+            <option value="determined">Determined</option>
+            <option value="frustrated">Frustrated</option>
+            <option value="confused">Confused</option>
+            <option value="needToWorkHarder">Need to Work Harder</option>
+          </select>
+        </fieldset>
+      </form>
+      <button type="Button" id="journal-save-btn">Record Journal Entry</button>
+    </div>
     <article class="entryLog"></article>
     <script src="scripts/data.js"></script>
     <script src="scripts/entryComponent.js"></script>

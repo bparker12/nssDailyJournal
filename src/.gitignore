@@ -1,2 +1,3 @@
 .vscode
 .bashrc
+src/api/database.json
