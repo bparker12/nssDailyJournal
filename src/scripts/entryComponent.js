@@ -1,6 +1,7 @@
 /*Define the keys and value for a JavaScript object that represents
 a journal entry about what you learned today*/
 
+//this is how the journal entries will be displayed to the DOM
 function journalText(inputs) {
     return `
     <div class="entriesCSS">

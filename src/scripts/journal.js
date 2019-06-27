@@ -10,6 +10,7 @@ console.log(API.getJournalEntries())
 
 let saveJournalEntry = document.querySelector("#journal-save-btn")
 
+//event listener for the submit button on a new journal entry
 saveJournalEntry.addEventListener("click", () => {
     let newdate = document.querySelector("#journalDate").value
     let newConcepts = document.querySelector("#conceptsCovered").value
@@ -30,7 +31,7 @@ saveJournalEntry.addEventListener("click", () => {
     }
 })
 
-
+//factory function that controls how the new journal entry will be pushed to JSON server
 let createJournalEntryFunc = (date, concepts, entry, mood) => {
     return ({
         date: date,
