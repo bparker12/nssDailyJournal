@@ -55,6 +55,17 @@ function deleteBtnListener() {
         })
     })
     }
+function editBtnListener(   ) {
+    let editClass = document.querySelectorAll(".edit")
+    editClass.forEach(editBtn => {
+        editBtn.addEventListener("click", () => {
+            console.log("edit?")
+        let targetEdit = event.target.id.split('-')[1]
+           let editForm = entryEditForm(targetEdit)
+            console.log(editForm)
+        })
+    })
+}
 
 
 

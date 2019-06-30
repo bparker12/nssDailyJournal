@@ -7,6 +7,7 @@ function loopToDom(stuff) {
         journalContainer.innerHTML += journalText(info)
     })
     deleteBtnListener()
+    editBtnListener()
 }
 
 
