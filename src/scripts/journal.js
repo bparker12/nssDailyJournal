@@ -69,6 +69,7 @@ function editBtnListener(jEntry) {
             let editForm = entryEditForm(journalEntryEdit)
              console.log(editForm)
              document.querySelector(`#editFormContainer-${targetEdit}`).appendChild(editForm)
+             saveEditBtn(targetEdit)
 
 
         })
@@ -77,7 +78,12 @@ function editBtnListener(jEntry) {
         })
     })
 }
-    
+    function saveEditBtn(id) {
+        let editSaveBtn = document.querySelector(`#${id}`)
+        editSaveBtn.addEventListener("click", () => {
+            console.log("save edit button works")
+        })
+    }
 
 
 

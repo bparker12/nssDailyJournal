@@ -98,7 +98,7 @@ function entryEditForm(journal) {
     `
 editDiv.innerHTML = editForm;
 editSave.textContent = "Save";
-editSave.setAttribute("id", `${journal.id}`)
+editSave.setAttribute("id", `edit-save-btn-${journal.id}`)
 editDiv.appendChild(editSave)
 
     return editDiv
