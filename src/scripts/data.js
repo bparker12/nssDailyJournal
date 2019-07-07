@@ -4,6 +4,10 @@ const API = {
         return fetch("http://localhost:8088/entries")
             .then(response => response.json())
 
+    },
+    getJournalEntry(id) {
+        return fetch(`http://localhost:8088/entries/${id}`)
+        .then(response => response.json())
     }
 }
 //this function allows you to push new journal entries into the DOM

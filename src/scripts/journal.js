@@ -30,7 +30,7 @@ saveJournalEntry.addEventListener("click", () => {
             })
     }
 })
-
+let container = document.querySelector("#editFormContainer")
 //factory function that controls how the new journal entry will be pushed to JSON server
 let createJournalEntryFunc = (date, concepts, entry, mood) => {
     return ({
@@ -55,18 +55,29 @@ function deleteBtnListener() {
         })
     })
     }
-function editBtnListener(   ) {
+function editBtnListener(jEntry) {
+    console.log("jEntry", jEntry)
     let editClass = document.querySelectorAll(".edit")
     editClass.forEach(editBtn => {
         editBtn.addEventListener("click", () => {
+            editBtn.disabled = true
+            let targetEdit = event.target.id.split('-')[1]
+            // document.getElementById(`editBtn-${targetEdit}`).style.visibility = "hidden" - this hides the button
             console.log("edit?")
-        let targetEdit = event.target.id.split('-')[1]
-           let editForm = entryEditForm(targetEdit)
-            console.log(editForm)
+        API.getJournalEntry(targetEdit)
+        .then(journalEntryEdit => {
+            let editForm = entryEditForm(journalEntryEdit)
+             console.log(editForm)
+             document.querySelector(`#editFormContainer-${targetEdit}`).appendChild(editForm)
+
+
+        })
+            // addEditFormDOm(targetEdit, editForm)
+
         })
     })
 }
-
+    
 
 
 
@@ -160,4 +171,4 @@ function editBtnListener(   ) {
 //             )
 //         }
 //         // What should happen when we finally have the array?
-//     })
+    //
