@@ -30,7 +30,7 @@ saveJournalEntry.addEventListener("click", () => {
             })
     }
 })
-
+let container = document.querySelector("#editFormContainer")
 //factory function that controls how the new journal entry will be pushed to JSON server
 let createJournalEntryFunc = (date, concepts, entry, mood) => {
     return ({
@@ -38,6 +38,15 @@ let createJournalEntryFunc = (date, concepts, entry, mood) => {
         concepts_covered: concepts,
         journal_entry: entry,
         mood: mood
+    })
+}
+let updateJournalEntryFunc = (date, concepts, entry, mood, id) => {
+    return ({
+        date: date,
+        concepts_covered: concepts,
+        journal_entry: entry,
+        mood: mood,
+        id: id
     })
 }
 
@@ -55,7 +64,45 @@ function deleteBtnListener() {
         })
     })
     }
+function editBtnListener(jEntry) {
+    console.log("jEntry", jEntry)
+    let editClass = document.querySelectorAll(".edit")
+    editClass.forEach(editBtn => {
+        editBtn.addEventListener("click", () => {
+            editBtn.disabled = true
+            let targetEdit = event.target.id.split('-')[1]
+            // document.getElementById(`editBtn-${targetEdit}`).style.visibility = "hidden" - this hides the button
+            console.log("edit?")
+        API.getJournalEntry(targetEdit)
+        .then(journalEntryEdit => {
+            let editForm = entryEditForm(journalEntryEdit)
+             console.log(editForm)
+             document.querySelector(`#editFormContainer-${targetEdit}`).appendChild(editForm)
+             saveEditBtn(targetEdit)
+        })
+            // addEditFormDOm(targetEdit, editForm)
 
+        })
+    })
+}
+    function saveEditBtn(id) {
+        let editSaveBtn = document.getElementById(`edit-save-btn-${id}`)
+        editSaveBtn.addEventListener("click", () => {
+            console.log("save edit button works")
+            let updateDate = document.querySelector("#journalDate-edit").value
+            let udpateConcept = document.querySelector("#conceptsCovered-edit").value
+            let updateEntry = document.querySelector("#journalEntry-edit").value
+            let updateMood = document.querySelector("#moodForTheDay-edit").value
+            let updateId = document.querySelector("#updateJournalId").value
+            let updateObj = updateJournalEntryFunc(updateDate, udpateConcept, updateEntry, updateMood, updateId)
+            console.log(updateObj)
+            updateJournalEntry(updateObj)
+            .then( () => {
+                API.getJournalEntries().then(loopToDom)
+            })
+
+        })
+    }
 
 
 
@@ -149,4 +196,4 @@ function deleteBtnListener() {
 //             )
 //         }
 //         // What should happen when we finally have the array?
-//     })
+    //

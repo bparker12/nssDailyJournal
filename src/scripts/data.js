@@ -4,6 +4,10 @@ const API = {
         return fetch("http://localhost:8088/entries")
             .then(response => response.json())
 
+    },
+    getJournalEntry(id) {
+        return fetch(`http://localhost:8088/entries/${id}`)
+        .then(response => response.json())
     }
 }
 //this function allows you to push new journal entries into the DOM
@@ -26,5 +30,16 @@ return fetch(`http://localhost:8088/entries/${entry}`, {
 })
 .then(res => res.json())
 }
+
+function updateJournalEntry(updateEntry) {
+    return fetch(`http://localhost:8088/entries/${updateEntry.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updateEntry)
+    })
+  }
+
 // fetch("http://localhost:3000/entries") // Fetch from the API
 //     .then(data => data.json())  // Parse as JSON

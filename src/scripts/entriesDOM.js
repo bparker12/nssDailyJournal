@@ -5,8 +5,11 @@ const journalContainer = document.querySelector(".entryLog")
 function loopToDom(stuff) {
     stuff.forEach(info => {
         journalContainer.innerHTML += journalText(info)
+        // console.log("what is this", info)
     })
+    // console.log("stuff", stuff)
     deleteBtnListener()
+    editBtnListener(stuff)
 }
 
 
