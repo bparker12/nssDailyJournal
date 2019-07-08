@@ -30,5 +30,16 @@ return fetch(`http://localhost:8088/entries/${entry}`, {
 })
 .then(res => res.json())
 }
+
+function updateJournalEntry(updateEntry) {
+    return fetch(`http://localhost:8088/entries/${updateEntry.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updateEntry)
+    })
+  }
+
 // fetch("http://localhost:3000/entries") // Fetch from the API
 //     .then(data => data.json())  // Parse as JSON

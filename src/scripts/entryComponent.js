@@ -54,13 +54,14 @@ function entryEditForm(journal) {
     let editForm =
     `
     <form class = "editForm">
+    <input type="hidden" id="updateJournalId" value="${journal.id}">
     <fieldset>
     <label for="journalDate">Date of Entry</label>
     <input
       type="date"
       name="journalDate"
       required
-      id="journalDate"
+      id="journalDate-edit"
       class="label"
       value=${journal.date}>
   </fieldset>
@@ -70,7 +71,7 @@ function entryEditForm(journal) {
       type="text"
       name="conceptsCovered"
       required
-      id="conceptsCovered"
+      id="conceptsCovered-edit"
       class="label"
       value="${journal.concepts_covered}"
     >
@@ -81,13 +82,13 @@ function entryEditForm(journal) {
       type="text"
       name="journalEntry"
       required
-      id="journalEntry"
+      id="journalEntry-edit"
       class="label"
       value="${journal.journal_entry}">
   </fieldset>
   <fieldset class="tiger">
     <label for="moodForTheDay">Mood for the Day</label>
-    <select required id="moodForTheDay">
+    <select required id="moodForTheDay-edit">
       <option value="Happy"${journal.mood === "Happy" ? "selected" : ""}>Happy</option>
       <option value="Determined" ${journal.mood === "Determined" ? "selected" : ""}>Determined</option>
       <option value="Frustrated" ${journal.mood === "Frustrated" ? "selected" : ""}>Frustrated</option>

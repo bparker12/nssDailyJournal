@@ -40,6 +40,15 @@ let createJournalEntryFunc = (date, concepts, entry, mood) => {
         mood: mood
     })
 }
+let updateJournalEntryFunc = (date, concepts, entry, mood, id) => {
+    return ({
+        date: date,
+        concepts_covered: concepts,
+        journal_entry: entry,
+        mood: mood,
+        id: id
+    })
+}
 
 function deleteBtnListener() {
     let deleteClass = document.querySelectorAll(".delete")
@@ -70,8 +79,6 @@ function editBtnListener(jEntry) {
              console.log(editForm)
              document.querySelector(`#editFormContainer-${targetEdit}`).appendChild(editForm)
              saveEditBtn(targetEdit)
-
-
         })
             // addEditFormDOm(targetEdit, editForm)
 
@@ -79,9 +86,21 @@ function editBtnListener(jEntry) {
     })
 }
     function saveEditBtn(id) {
-        let editSaveBtn = document.querySelector(`#${id}`)
+        let editSaveBtn = document.getElementById(`edit-save-btn-${id}`)
         editSaveBtn.addEventListener("click", () => {
             console.log("save edit button works")
+            let updateDate = document.querySelector("#journalDate-edit").value
+            let udpateConcept = document.querySelector("#conceptsCovered-edit").value
+            let updateEntry = document.querySelector("#journalEntry-edit").value
+            let updateMood = document.querySelector("#moodForTheDay-edit").value
+            let updateId = document.querySelector("#updateJournalId").value
+            let updateObj = updateJournalEntryFunc(updateDate, udpateConcept, updateEntry, updateMood, updateId)
+            console.log(updateObj)
+            updateJournalEntry(updateObj)
+            .then( () => {
+                API.getJournalEntries().then(loopToDom)
+            })
+
         })
     }
 
