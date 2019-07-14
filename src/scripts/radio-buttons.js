@@ -3,16 +3,17 @@
 let moodRadio = document.getElementsByName("mood")
 moodRadio.forEach(radioBtn => {
     radioBtn.addEventListener("click", event => {
-        const mood = event.target.value
-        console.log("mood btn", mood)
+        const mood = parseInt(event.target.id)
+        // console.log("mood btn", mood)
         journalContainer.innerHTML = ""
-        API.getJournalEntries()
+        API.getJournalEntries("_expand=mood")
             .then(data =>
                 data.filter(entry => {
+                    // console.log("entry after filter", entry)
                     let filteredEntry = []
-                    if (entry.mood === mood) {
+                    // console.log("entry mood id", entry.moodId)
+                    if (entry.moodId === mood) {
                         filteredEntry.push(entry)
-                        console.log(filteredEntry)
                         loopToDom(filteredEntry)
                     }
                 })

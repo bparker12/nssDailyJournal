@@ -4,50 +4,65 @@
       "date": "2019-06-05",
       "concepts_covered": "Functions and API's with JSON",
       "journal_entry": "API's look to be really tough, but seem to be really useful moving forward",
-      "mood": "Happy",
+      "moodId": "5",
       "id": 2
     },
     {
       "date": "2019-06-07",
       "concepts_covered": "User input & Lab Time",
       "journal_entry": "User input will be a very useful tool going forward to make the apps more usable. Seems difficult and challenging to know with everything else we have learned throughtout the week.  Need to practice a lot more",
-      "mood": "Challenged",
+      "moodId": 4,
       "id": 3
     },
     {
       "date": "2019-06-10",
       "concepts_covered": "Event Listeners and lab",
       "journal_entry": "Event listeners are going to be a good tool for getting data.  Never knew it took so much code to click on a button and make it do something",
-      "mood": "Challenged",
+      "moodId": 4,
       "id": 4
     },
     {
       "date": "2019-06-17",
       "concepts_covered": "ES6 Modularize",
       "journal_entry": "Learned how to modularize our code using new ES6 import and export.  Seems like a good tool, but tough at the same time.",
-      "mood": "Determined",
+      "moodId": 2,
       "id": 5
     },
     {
       "date": "2019-06-19",
       "concepts_covered": "Delete Data from API",
       "journal_entry": "Today we learned how to add a delete button to remove things from an API. Very complicated, going to need to work on this a lot. ",
-      "mood": "Challenged",
+      "moodId": 4,
       "id": 6
     },
     {
       "date": "2019-06-20",
       "concepts_covered": "Object Methods/Adding to DOM dynamically",
       "journal_entry": "Learned how to input dom elements from javascript dynamically. Really looking forward to utilizing that moving forward. ",
-      "mood": "Determined",
+      "moodId": 2,
       "id": 7
+    }
+  ],
+  "moods": [
+    {
+      "id": 1,
+      "label": "happy"
     },
     {
-      "date": "2019-06-19",
-      "concepts_covered": "stuff",
-      "journal_entry": "stuff",
-      "mood": "Determined",
-      "id": 8
+      "id": 2,
+      "label": "determined"
+    },
+    {
+      "id": 3,
+      "label": "frustrated"
+    },
+    {
+      "id": 4,
+      "label": "challenged"
+    },
+    {
+      "id": 5,
+      "label": "confused"
     }
   ]
 }
