@@ -2,7 +2,7 @@ body {
     background-color: darkgrey;
 
 }
-fieldset {
+.input {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -11,7 +11,7 @@ fieldset {
 }
 
 form {
-    width: 40%;
+    width: 90%;
 }
 /* .label {
     width: 200px;
@@ -38,4 +38,18 @@ form {
     flex-direction: column;
     background-color: darkred;
 
+}
+.search-param {
+    display: flex;
+    flex-direction: row;
+}
+.search {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+#search-journal {
+    display: flex;
+    justify-content: center;
+    width: 95%
 }
