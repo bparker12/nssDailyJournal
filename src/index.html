@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Daily Journal</h1>
-    <div>
+    <div id="input-fields">
       <form action="" class="form">
         <fieldset class="input">
           <label for="journalDate">Date of Entry</label>
@@ -48,37 +48,21 @@
           ></textarea>
         </fieldset>
       </form>
-      <form action="" class="form">
-        <fieldset class="tiger">
-          <label for="moodForTheDay">Mood for the Day</label>
-          <select
-            name="moodForTheDay"
-            required
-            id="moodForTheDay"
-            class="label"
-          >
-            <option value="Happy">Happy</option>
-            <option value="Determined">Determined</option>
-            <option value="Frustrated">Frustrated</option>
-            <option value="Confused">Confused</option>
-            <option value="Challenged">Challenged</option>
-          </select>
-        </fieldset>
-      </form>
-      <button type="Button" id="journal-save-btn">Record Journal Entry</button>
     </div>
     <div class="search-param">
     <fieldset class="search">
       <legend>Filter Journal Entries by Mood</legend>
       <div>
         <label for="happy">Happy</label>
-        <input type="radio" name="mood" id="Happy" value="Happy" />
+        <input type="radio" name="mood" id="1" value="Happy" />
         <label for="determined">Determined</label>
-        <input type="radio" name="mood" id="Determined" value="Determined" />
+        <input type="radio" name="mood" id="2" value="Determined" />
         <label for="frustrated">Frustrated</label>
-        <input type="radio" name="mood" id="Frustrated" value="Frustrated" />
+        <input type="radio" name="mood" id="3" value="Frustrated" />
         <label for="challenged">Challenged</label>
-        <input type="radio" name="mood" id="Challenged" value="Challenged" />
+        <input type="radio" name="mood" id="4" value="Challenged" />
+        <label for="confused">Confused</label>
+        <input type="radio" name="mood" id="5" value="Confused" />
       </div>
     </fieldset>
     <fieldset class="search">

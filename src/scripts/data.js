@@ -1,7 +1,14 @@
 //this is how you fetch the data from the JSON server
 const API = {
-    getJournalEntries() {
-        return fetch("http://localhost:8088/entries")
+    // getJournalEntries() {
+    //     return fetch("http://localhost:8088/entries?_expand=mood")
+    //         .then(response => response.json())
+    getJournalEntries(info) {
+        let url = ("http://localhost:8088/entries")
+        if (info) {
+            url += `?${info}`
+        }
+        return fetch(url)
             .then(response => response.json())
 
     },

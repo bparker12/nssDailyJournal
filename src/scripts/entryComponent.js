@@ -2,6 +2,37 @@
 a journal entry about what you learned today*/
 
 //this is how the journal entries will be displayed to the DOM
+
+function moodOptions () {
+  let targetDiv = document.querySelector("#input-fields")
+  let div = document.createElement("div")
+  let html =
+  `
+  <form action="" class="form">
+  <fieldset class="tiger">
+  <label for="moodForTheDay">Mood for the Day</label>
+  <select
+  name="moodForTheDay"
+  required
+  id="moodForTheDay"
+  class="label"
+  >
+  <option id="1" value="Happy">Happy</option>
+  <option id="2" value="Determined">Determined</option>
+  <option id="3" value="Frustrated">Frustrated</option>
+  <option id="5" value="Confused">Confused</option>
+  <option id="4" value="Challenged">Challenged</option>
+  </select>
+  </fieldset>
+  </form>
+  <button type="Button" id="journal-save-btn">Record Journal Entry</button>
+  `
+  div.innerHTML = html
+  targetDiv.appendChild(moodOptions())
+}
+
+
+
 function journalText(inputs) {
     return `
     <div class="entriesCSS" id= "editFormContainer-${inputs.id}">
@@ -15,7 +46,7 @@ function journalText(inputs) {
         id="conceptsCovered"
         class="label">${inputs.journal_entry}</h3>
         </form>
-        <p class = "jmood"> My mood for today is: ${inputs.mood}</p>
+        <p class = "jmood"> My mood for today is: ${inputs.mood.label}</p>
         <div>
         <button id="editBtn-${inputs.id}" class="edit">Edit</Button>
         <button id="deleteBtn-${inputs.id}" class="delete">Delete</button>
@@ -89,11 +120,11 @@ function entryEditForm(journal) {
   <fieldset class="tiger">
     <label for="moodForTheDay">Mood for the Day</label>
     <select required id="moodForTheDay-edit">
-      <option value="Happy"${journal.mood === "Happy" ? "selected" : ""}>Happy</option>
-      <option value="Determined" ${journal.mood === "Determined" ? "selected" : ""}>Determined</option>
-      <option value="Frustrated" ${journal.mood === "Frustrated" ? "selected" : ""}>Frustrated</option>
-      <option value="Confused" ${journal.mood === "Confused" ? "selected" : ""}>Confused</option>
-      <option value="Challenged" ${journal.mood === "Challenged" ? "selected" : ""}>Challenged</option>
+      <option value="1"${journal.moodId === 1 ? "selected" : ""}>Happy</option>
+      <option value="2" ${journal.moodId === 2 ? "selected" : ""}>Determined</option>
+      <option value="3" ${journal.moodId === 3 ? "selected" : ""}>Frustrated</option>
+      <option value="5" ${journal.moodId === 5 ? "selected" : ""}>Confused</option>
+      <option value="4" ${journal.moodId === 4 ? "selected" : ""}>Challenged</option>
     </select>
   </fieldset>
     `

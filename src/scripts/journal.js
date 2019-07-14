@@ -5,8 +5,10 @@
     Change the fake variable names below to what they should be
     to get the data and display it.
 */
-API.getJournalEntries().then(loopToDom)
+moodOptions()
+API.getJournalEntries("_expand=mood").then(loopToDom)
 console.log(API.getJournalEntries())
+console.log()
 searchBtListener()
 
 let saveJournalEntry = document.querySelector("#journal-save-btn")
@@ -16,8 +18,9 @@ saveJournalEntry.addEventListener("click", () => {
     let newDate = document.querySelector("#journalDate").value
     let newConcepts = document.querySelector("#conceptsCovered").value
     let newJEntry = document.querySelector("#journalEntry").value
-    let newMood = document.querySelector("#moodForTheDay").value
+    let newMood = document.querySelector("#moodForTheDay").id
     if (newDate === "" || newConcepts === "" || newJEntry === "" || newMood === "") {
+        alert("Please fill in Missing Field")
     } else {
         let newEntry = createJournalEntryFunc(newDate, newConcepts, newJEntry, newMood)
         console.log(newEntry)
@@ -26,7 +29,7 @@ saveJournalEntry.addEventListener("click", () => {
             .then(dataJS => {
                 console.log(dataJS.newMood)
                 journalContainer.innerHTML = ""
-                API.getJournalEntries()
+                API.getJournalEntries("_expand=mood")
                 // .then( entryData => loopToDom(entryData))
             })
     }
@@ -38,7 +41,7 @@ let createJournalEntryFunc = (date, concepts, entry, mood) => {
         date: date,
         concepts_covered: concepts,
         journal_entry: entry,
-        mood: mood
+        mood: moodId
     })
 }
 let updateJournalEntryFunc = (date, concepts, entry, mood, id) => {
@@ -46,7 +49,7 @@ let updateJournalEntryFunc = (date, concepts, entry, mood, id) => {
         date: date,
         concepts_covered: concepts,
         journal_entry: entry,
-        mood: mood,
+        moodId: mood,
         id: id
     })
 }
@@ -60,7 +63,7 @@ function deleteBtnListener() {
             console.log(btnId)
             deleteJournalEntry(btnId)
                 .then(data => {
-                    API.getJournalEntries().then(loopToDom)
+                    API.getJournalEntries("_expand=mood").then(loopToDom)
                 })
         })
     })
@@ -99,7 +102,7 @@ function saveEditBtn(id) {
         console.log(updateObj)
         updateJournalEntry(updateObj)
             .then(() => {
-                API.getJournalEntries().then(loopToDom)
+                API.getJournalEntries("_expand=mood").then(loopToDom)
             })
 
     })
@@ -116,13 +119,13 @@ function searchBtListener() {
             let lowercaseSearch = search.toLowerCase()
             console.log("lowercase", lowercaseSearch)
             let searchResults = []
-            API.getJournalEntries().then(entries => {
+            API.getJournalEntries("_expand=mood").then(entries => {
                 entries.forEach(entry =>{
                     let entryToLowercase = {
                     lowerDate: entry.date,
                     LowerConcepts: entry.concepts_covered.toLowerCase(),
                     LowerJEnrty: entry.journal_entry.toLowerCase(),
-                    entryMood: entry.mood.toLowerCase(),
+                    entryMood: entry.mood.label.toLowerCase(),
                     }
                     for (const value of Object.values(entryToLowercase)) {
                         if (value.includes(lowercaseSearch) === true && !searchResults.includes(entry)) {
