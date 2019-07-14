@@ -11,7 +11,7 @@
     <h1>Daily Journal</h1>
     <div>
       <form action="" class="form">
-        <fieldset>
+        <fieldset class="input">
           <label for="journalDate">Date of Entry</label>
           <input
             type="date"
@@ -23,7 +23,7 @@
         </fieldset>
       </form>
       <form action="" class="form">
-        <fieldset>
+        <fieldset class="input">
           <label for="conceptsCovered">Concepts Covered</label>
           <textarea
             rows="5"
@@ -36,7 +36,7 @@
         </fieldset>
       </form>
       <form action="" class="form">
-        <fieldset>
+        <fieldset class="input">
           <label for="jornalEntry">Journal Entry</label>
           <textarea
             rows="5"
@@ -67,7 +67,8 @@
       </form>
       <button type="Button" id="journal-save-btn">Record Journal Entry</button>
     </div>
-    <fieldset>
+    <div class="search-param">
+    <fieldset class="search">
       <legend>Filter Journal Entries by Mood</legend>
       <div>
         <label for="happy">Happy</label>
@@ -80,6 +81,12 @@
         <input type="radio" name="mood" id="Challenged" value="Challenged" />
       </div>
     </fieldset>
+    <fieldset class="search">
+      <legend>Search Journal Entries</legend>
+      <input type="text" id="search-journal" placeholder="Ex: Functions">
+    </fieldset>
+  </div>
+
     <article class="entryLog"></article>
     <script src="scripts/data.js"></script>
     <script src="scripts/entriesDOM.js"></script>

@@ -7,6 +7,7 @@
 */
 API.getJournalEntries().then(loopToDom)
 console.log(API.getJournalEntries())
+searchBtListener()
 
 let saveJournalEntry = document.querySelector("#journal-save-btn")
 
@@ -53,19 +54,19 @@ let updateJournalEntryFunc = (date, concepts, entry, mood, id) => {
 function deleteBtnListener() {
     let deleteClass = document.querySelectorAll(".delete")
     deleteClass.forEach(deleteBtn => {
-            deleteBtn.addEventListener("click", () => {
+        deleteBtn.addEventListener("click", () => {
             console.log("is this delete?")
             let btnId = event.target.id.split('-')[1]
             console.log(btnId)
             deleteJournalEntry(btnId)
-            .then( data => {
-            API.getJournalEntries().then(loopToDom)
-            })
+                .then(data => {
+                    API.getJournalEntries().then(loopToDom)
+                })
         })
     })
-    }
+}
 function editBtnListener(jEntry) {
-    console.log("jEntry", jEntry)
+    // console.log("jEntry", jEntry)
     let editClass = document.querySelectorAll(".edit")
     editClass.forEach(editBtn => {
         editBtn.addEventListener("click", () => {
@@ -73,38 +74,83 @@ function editBtnListener(jEntry) {
             let targetEdit = event.target.id.split('-')[1]
             // document.getElementById(`editBtn-${targetEdit}`).style.visibility = "hidden" - this hides the button
             console.log("edit?")
-        API.getJournalEntry(targetEdit)
-        .then(journalEntryEdit => {
-            let editForm = entryEditForm(journalEntryEdit)
-             console.log(editForm)
-             document.querySelector(`#editFormContainer-${targetEdit}`).appendChild(editForm)
-             saveEditBtn(targetEdit)
-        })
+            API.getJournalEntry(targetEdit)
+                .then(journalEntryEdit => {
+                    let editForm = entryEditForm(journalEntryEdit)
+                    console.log(editForm)
+                    document.querySelector(`#editFormContainer-${targetEdit}`).appendChild(editForm)
+                    saveEditBtn(targetEdit)
+                })
             // addEditFormDOm(targetEdit, editForm)
 
         })
     })
 }
-    function saveEditBtn(id) {
-        let editSaveBtn = document.getElementById(`edit-save-btn-${id}`)
-        editSaveBtn.addEventListener("click", () => {
-            console.log("save edit button works")
-            let updateDate = document.querySelector("#journalDate-edit").value
-            let udpateConcept = document.querySelector("#conceptsCovered-edit").value
-            let updateEntry = document.querySelector("#journalEntry-edit").value
-            let updateMood = document.querySelector("#moodForTheDay-edit").value
-            let updateId = document.querySelector("#updateJournalId").value
-            let updateObj = updateJournalEntryFunc(updateDate, udpateConcept, updateEntry, updateMood, updateId)
-            console.log(updateObj)
-            updateJournalEntry(updateObj)
-            .then( () => {
+function saveEditBtn(id) {
+    let editSaveBtn = document.getElementById(`edit-save-btn-${id}`)
+    editSaveBtn.addEventListener("click", () => {
+        console.log("save edit button works")
+        let updateDate = document.querySelector("#journalDate-edit").value
+        let udpateConcept = document.querySelector("#conceptsCovered-edit").value
+        let updateEntry = document.querySelector("#journalEntry-edit").value
+        let updateMood = document.querySelector("#moodForTheDay-edit").value
+        let updateId = document.querySelector("#updateJournalId").value
+        let updateObj = updateJournalEntryFunc(updateDate, udpateConcept, updateEntry, updateMood, updateId)
+        console.log(updateObj)
+        updateJournalEntry(updateObj)
+            .then(() => {
                 API.getJournalEntries().then(loopToDom)
             })
 
-        })
-    }
+    })
+}
 
+function searchBtListener() {
+    let svnBtn = document.querySelector("#search-journal")
+    svnBtn.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            // console.log("search button works")
+            let search = event.target.value
+            console.log("search results:", search)
+            let lowercaseSearch = search.toLowerCase()
+            console.log("lowercase", lowercaseSearch)
+            let searchResults = []
+            API.getJournalEntries().then(entries => {
+                entries.forEach(entry =>{
+                    let entryToLowercase = {
+                    lowerDate: entry.date,
+                    LowerConcepts: entry.concepts_covered.toLowerCase(),
+                    LowerJEnrty: entry.journal_entry.toLowerCase(),
+                    entryMood: entry.mood.toLowerCase(),
+                    }
+                    for (const value of Object.values(entryToLowercase)) {
+                        if (value.includes(lowercaseSearch) === true && !searchResults.includes(entry)) {
+                            searchResults.push(entry)
+                            console.log(value)
+                        }
+                    }
+                })
+                console.log("search results", searchResults)
+                journalContainer.innerHTML = ""
+                loopToDom(searchResults)
+                svnBtn.value = ""
+            })
 
+        }
+    })
+}
+
+// function SearchDatabase(thing) {
+//     API.getJournalEntries()
+//         .then(entries => {
+//             console.log("database: ", entries["date"])
+//             entries.forEach(entries => {
+
+//             })
+
+//         })
+// }
 
 
 
